@@ -1,0 +1,99 @@
+.searchContainer{
+    padding: 0 20rpx;
+}
+/* 头部区域 */
+.header{
+    display:flex;
+    height: 60rpx;
+    line-height: 60rpx;
+    margin: 10rpx 0;
+}
+.searchInput{
+    flex:1;
+    position: relative;
+    padding-left: 30rpx;
+    background: rgba(237, 237, 237, 0.3);
+    border-radius:30rpx;
+}
+.searchIcon{
+    position:absolute;
+    left: 15rpx;
+}
+.search{
+    margin-left: 30rpx;
+    height: 100%;
+    line-height: 60rpx;
+}
+.searchHolder{
+    font-size: 28rpx;
+}
+.cancel{
+    width: 100rpx;
+    text-align: center;
+}
+/* 热搜榜 */
+.hotContainer .title{
+    font-size: 28rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-bottom:1rpx solid #eee;
+}
+.hotList{
+    display: flex;
+    flex-wrap: wrap;
+}
+.hotListItem{
+    width:50%;
+    height:80rpx;
+    line-height: 80rpx;
+    font-size: 26rpx;
+}
+.order{
+    margin: 0 10rpx;
+}
+.hotListItem .iconImg{
+    width: 35rpx;
+    height: 20rpx;
+    margin-left: 10rpx;
+}
+/* 搜索结果 */
+.searchResultHeader{
+    font-size: 24rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    color: #dd001b;
+    border-bottom: 1rpx solid #eee;
+}
+.searchResultItem{
+    display: flex;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+.searchResultItem .resultIcon{
+    width: 50rpx;
+}
+.resultContent{
+    flex:1;
+    border-bottom: 1rpx solid #eee;
+    font-size: 26rpx;
+}
+/* 历史记录 */
+.history{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 26rpx ;
+    line-height: 50rpx;
+}
+.historyItem{
+    height: 50rpx;
+    margin:10rpx 30rpx;
+    padding: 0 20rpx;
+    background: #ededed;
+    border-radius: 30rpx;
+}
+.history .delete{
+    position: absolute;
+    bottom: 10rpx;
+    right: 15rpx;
+}

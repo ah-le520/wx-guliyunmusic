@@ -1,0 +1,122 @@
+/* pages/songDetail/songDetail.wxss   */
+.songDtailContainer{
+    height: 100vh;
+    background:rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+/* 底座 */
+.circle{
+    position: relative;
+    z-index: 100;
+    background-color: #f7f7f8;
+    width: 60rpx;
+    height: 60rpx;
+    border-radius:50%;
+}
+.needle{
+    position: relative;
+    z-index: 99;
+    top: -22rpx;
+    left: 60rpx;
+    width: 192rpx;
+    height:274rpx;
+    /* 设置旋转中心点 */
+    transform-origin:40rpx 0;
+    transition:transform 1s;
+    transform: rotate(-20deg);
+}
+.needleRotate{
+    transform: rotate(0deg);
+}
+/* 磁盘 */
+.discContainer{
+    position: relative;
+    top:-170rpx;
+    z-index: 90;
+    widows: 598rpx;
+    height:598rpx;
+   
+}
+/* 旋转动画 */
+.discAnimation{
+    animation: disc 4s linear infinite;
+    animation-delay: 1s;
+}
+/* 定义动画 */
+@keyframes disc {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+.discContainer .disc{
+    width: 598rpx;
+    height: 598rpx;
+}
+.discContainer .musicImg{
+    position: absolute;
+    top:0;
+    left: 0;
+    right:0;
+    bottom:0;
+    margin:auto;
+    border-radius: 50%;
+    width: 370rpx;
+    height: 370rpx;
+}
+/* 底部控制 */
+.musicControl{
+    position: absolute;
+    bottom:40rpx;
+    font-size: 50rpx;
+    width: 100%;
+    border-top:1rpx solid #ccc;
+    display: flex;
+}
+.musicControl text{
+    height: 120rpx;
+    width: 20%;
+    font-size: 50rpx;
+    line-height: 120rpx;
+    text-align: center;
+    color: #fff;
+}
+.musicControl .big{
+    font-size: 80rpx;
+}
+/* 进度条 */
+.progressControl{
+    display: flex;
+    position: absolute;
+    bottom: 200rpx;
+    width: 640rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+.barControl{
+    position: relative;
+    width: 450rpx;
+    height: 4rpx;
+    background: rgba(0, 0, 0, 0.4);
+    margin: auto;
+}
+.barControl .progressBar{
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 4rpx;
+    background: red;
+}
+.audio-circle{
+    position: absolute;
+    right: -12rpx;
+    top: -4rpx;
+    width: 12rpx;
+    height: 12rpx;
+    background: #fff;
+    border-radius: 50%;
+}

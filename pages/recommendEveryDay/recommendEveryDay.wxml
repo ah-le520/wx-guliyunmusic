@@ -1,0 +1,34 @@
+<view class="recommendContainer">
+<!-- 头部区域 -->
+<view class="header">
+<image src="../../static/images/recommendSong/recommendSong.jpg"></image>
+<view class="data">
+<text>{{month}} / </text>
+<text>{{date}}</text>
+</view>
+</view>
+<!-- 列表区域 -->
+<view class="listContainer">
+<view class="listHeader">
+<text>播放全部</text>
+<text>多选</text>
+</view>
+<!-- 内容区域 -->
+<scroll-view class="listScroll" scroll-y>
+<view class="scrollItem" 
+wx:for="{{recommendList}}"
+wx:key="id"
+bindtap="toSongDetail"
+data-songid="{{item.id}}"
+data-index="{{index}}"
+>
+<image src="{{item.album.picUrl}}">dsadasd</image>
+<view class="musicInfo">
+<text>{{item.name}}</text>
+<text>{{item.artists[0].name}}</text>
+</view>
+<text class=" iconfont icon-gengduo-shuxiang"></text>
+</view>
+</scroll-view>
+</view>
+</view>
