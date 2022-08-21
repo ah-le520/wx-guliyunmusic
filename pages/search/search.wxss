@@ -27,6 +27,12 @@
 .searchHolder{
     font-size: 28rpx;
 }
+.searchInput .clear{
+    position: absolute;
+    right: 20rpx;
+    top:0;
+    z-index: 10;
+}
 .cancel{
     width: 100rpx;
     text-align: center;

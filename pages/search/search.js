@@ -11,6 +11,7 @@ Page({
          hotListData:[],
          searchKeyWord:'',//用户输入的关键字
          searchResultListData:[],//相关的搜索信息
+         historyList:[],//历史记录
     },
 
     /**
@@ -21,6 +22,8 @@ Page({
         this.getSearchKeyWord();
          // 获取热搜榜数据
          this.getHotListData();
+        //  获取历史记录
+        this.getSearchHistory();
     },
     //获取默认搜索关键字
         async  getSearchKeyWord(){
@@ -66,20 +69,57 @@ Page({
         // 搜索的请求
        async getSearchInfo(){
         if(!this.data.searchKeyWord){
-            
             return
         }
-            let result  =await request('/search',{keywords:this.data.searchKeyWord,limit:10})
-            console.log(result);
+        let {searchKeyWord,historyList} = this.data
+            let result  =await request('/search',{keywords:searchKeyWord,limit:10})
             if(result.code == 200){
+                if(historyList.indexOf(searchKeyWord) != -1){
+                    historyList.splice(historyList.indexOf(searchKeyWord),1)
+                }
+                // 保存历史记录
+                historyList.unshift(searchKeyWord)
                 this.setData({
-                    searchResultListData:result.result.songs
+                    searchResultListData:result.result.songs,
+                    historyList
                 })
+                // 存到本地
+                wx.setStorageSync('searchHistory', historyList)
             }else{
                 this.setData({
-                    searchResultListData:[]
+                    searchResultListData:[],
                 })
             }
+        },
+        // 获取历史记录
+        getSearchHistory(){
+            let historyList = wx.getStorageSync('searchHistory');
+            if(historyList){
+                this.setData({
+                    historyList
+                })
+            }
+        },
+        // 清空搜索框内容
+        clearContent(){
+            this.setData({
+                searchKeyWord:'',
+                searchResultListData:[]
+            })
+        },
+        // 删除历史记录
+        deleteHistory(){
+            wx.showModal({
+                content:'确认删除吗？',
+                success:(res)=>{
+                if(res.confirm){
+                    this.setData({
+                        historyList:[]
+                    })
+                    wx.removeStorageSync('searchHistory')
+                }
+                }
+            })
         },
     /** 
      * 生命周期函数--监听页面初次渲染完成
